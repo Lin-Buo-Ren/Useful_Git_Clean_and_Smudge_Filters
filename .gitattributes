@@ -1,0 +1,3 @@
+*.fodt filter=clean-fodt
+*.xslt filter=clean-xml
+*.svg filter=clean-svg
