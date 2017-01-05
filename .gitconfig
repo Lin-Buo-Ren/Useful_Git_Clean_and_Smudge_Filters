@@ -1,8 +1,14 @@
 [filter "clean-fodt"]
-	clean =  \"Git Clean and Smudge Filters/clean-fodt.bash\"
+	clean = \"Git Clean and Smudge Filters/clean-fodt.bash\"
 
 [filter "clean-xml"]
-	clean =  \"Git Clean and Smudge Filters/clean-xml.bash\"
+	clean = \"Git Clean and Smudge Filters/clean-xml.bash\"
 
 [filter "clean-svg"]
-	clean =  \"Git Clean and Smudge Filters/clean-svg.bash\"
+	clean = \"Git Clean and Smudge Filters/clean-svg.bash\"
+
+[filter "clean-css"]
+	clean = \"Git Clean and Smudge Filters/clean-css.bash\"
+
+[filter "clean-html"]
+	clean = \"Git Clean and Smudge Filters/clean-html.bash\"
