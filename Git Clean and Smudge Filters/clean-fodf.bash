@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # 上列為宣告執行 script 程式用的殼程式(shell)的 shebang
-# clean-fodt.bash - Clean filter for Flat ODT
+# Clean filter for Flat-ODF
 # 林博仁 © 2016
-
+set -x
 ######## File scope variable definitions ########
 # Defensive Bash Programming - not-overridable primitive definitions
 # http://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming/
@@ -33,19 +33,61 @@ set -o pipefail
 # http://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming/
 main() {
 	printf "Clean 過濾器：正在移除非必要資訊跟美化 XML 標記代碼……\n" 1>&2
-	xmlstarlet edit --pf --ps --delete \
-		"/office:document/office:settings |
-		 /office:document/office:meta/meta:generator |
-		 /office:document/office:meta/meta:editing-cycles |
-		 /office:document/office:meta/meta:editing-duration |
-		 /office:document/office:meta/meta:document-statistic |
-		 /office:document/office:meta/dc:date |
-		 /office:document/office:styles/style:default-style |
-		 /office:document/office:font-face-decls/style:font-face[@style:font-family-generic='system']" |\
-		 xmlstarlet transform "$PROGRAM_DIRECTORY"/clean-fodt.remove-xml-id-attributes.xslt |\
-		 xmlstarlet format --indent-tab
+
+	# Catch the incoming stream to a temp file
+	local temp_file_name="$(basename "$PROGRAM_FILENAME").temporary.stdin.xml"
+	local temp_file="$PROGRAM_DIRECTORY/$temp_file_name"
+	rm --force "$temp_file"
+	cat >"$temp_file"
+
+	# 不追蹤存檔當前軟體狀態
+	xml_delete_node "$temp_file" "/office:document/office:settings"
+
+	# 不追蹤編輯軟體識別名稱
+	xml_delete_node "$temp_file" "/office:document/office:meta/meta:generator"
+
+	# 不追蹤編輯次數
+	xml_delete_node "$temp_file" "/office:document/office:meta/meta:editing-cycles"
+
+	# 不追蹤總編輯時間
+	xml_delete_node "$temp_file" "/office:document/office:meta/meta:editing-duration"
+
+	# 不追蹤文件統計資訊（列數、字數等）
+	xml_delete_node "$temp_file" "/office:document/office:meta/meta:document-statistic"
+
+	# 不追蹤從系統取得的預設字型資訊
+	xml_delete_node "$temp_file" "/office:document/office:font-face-decls/style:font-face[@style:font-family-generic='system']"
+
+	xml_delete_node "$temp_file" "/office:document/office:meta/dc:date"
+
+	# 不追蹤預設(?)樣式資訊
+	xml_delete_node "$temp_file" "/office:document/office:styles/style:default-style"
+
+	# 不追蹤非必要且會變動的 xml:id 屬性
+	xml_transform_node "$PROGRAM_DIRECTORY"/clean-fodf.remove-xml-id-attributes.xslt "$temp_file"
+
+	xmlstarlet format --indent-tab "$temp_file"
+
+	rm "$temp_file"
 
 	exit 0
 }
-main
 
+xml_delete_node(){
+	local xml_file="$1"
+	local node_xpath="$2"
+
+	local temp_file="${xml_file}.new"
+	xmlstarlet edit --pf --ps --delete "$node_xpath" "$xml_file" >"$temp_file"
+	mv --force "$temp_file" "$xml_file"
+}
+
+xml_transform_node(){
+	local xsl_file="$1"
+	local xml_file="$2"
+
+	local temp_file="${xml_file}.new"
+	xmlstarlet transform "$xsl_file" "$xml_file" >"${temp_file}"
+	mv --force "$temp_file" "$xml_file"
+}
+main
