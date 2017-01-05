@@ -4,4 +4,4 @@
 #*.html filter=clean-html
 #*.xhtml filter=clean-html
 #*.htm filter=clean-html
-#*.css filter=clean-css
+#*.css filter=clean-css-csstidy
