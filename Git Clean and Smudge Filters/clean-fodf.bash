@@ -40,7 +40,7 @@ main() {
 	rm --force "$temp_file"
 	cat >"$temp_file"
 
-	# 不追蹤存檔當前軟體狀態
+	# 不追蹤存檔當前編輯軟體設定
 	xml_delete_node "$temp_file" "/office:document/office:settings"
 
 	# 不追蹤編輯軟體識別名稱
