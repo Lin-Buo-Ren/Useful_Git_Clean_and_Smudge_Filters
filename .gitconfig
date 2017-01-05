@@ -7,8 +7,11 @@
 [filter "clean-svg"]
 	clean = \"Git Clean and Smudge Filters/clean-svg.bash\"
 
-[filter "clean-css"]
-	clean = \"Git Clean and Smudge Filters/clean-css.bash\"
+[filter "clean-css-cssbeautify"]
+	clean = \"Git Clean and Smudge Filters/clean-css.cssbeautify.bash\"
+
+[filter "clean-css-csstidy"]
+	clean = \"Git Clean and Smudge Filters/clean-css.csstidy.bash\"
 
 [filter "clean-html"]
 	clean = \"Git Clean and Smudge Filters/clean-html.bash\"
