@@ -2,7 +2,7 @@
 # 上列為宣告執行 script 程式用的殼程式(shell)的 shebang
 # Clean filter for Flat-ODF
 # 林博仁 © 2016
-set -x
+
 ######## File scope variable definitions ########
 # Defensive Bash Programming - not-overridable primitive definitions
 # http://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming/
