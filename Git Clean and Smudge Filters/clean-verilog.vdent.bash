@@ -34,7 +34,7 @@ set -o pipefail
 main() {
 	printf "Clean 過濾器：正在美化 Verilog HDL 代碼……\n" 1>&2
 
-	vdent
+	vdent -s8 | unexpand
 
 	exit "${?}"
 }
