@@ -41,8 +41,9 @@ main() {
 		local temp_file_name="$(basename "$PROGRAM_FILENAME").temporary.stdin" # Argument list is single filename
 		local temp_file="${PROGRAM_DIRECTORY}/$temp_file_name"
 		local filter_name="$(basename --suffix=.manual-apply.bash "$PROGRAM_FILENAME").bash"
+		local filter="${PROGRAM_DIRECTORY}/${filter_name}"
 
-		cat "$target_file" | "${PROGRAM_DIRECTORY}/${filter_name}" >"$temp_file"
+		"${filter}" <"${target_file}" >"$temp_file"
 		mv --force "$temp_file" "$target_file"
 		exit 0
 	fi
