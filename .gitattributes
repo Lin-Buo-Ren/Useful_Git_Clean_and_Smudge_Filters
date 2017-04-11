@@ -10,3 +10,4 @@
 #*.css filter=clean-css-csstidy
 #*.css filter=clean-css-cssbeautify
 #*.v filter=clean-verilog-vdent
+#*.v filter=clean-verilog-iStyle

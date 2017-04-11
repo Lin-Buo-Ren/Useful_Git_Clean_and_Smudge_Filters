@@ -18,3 +18,6 @@
 
 [filter "clean-verilog-vdent"]
 	clean = \"Git Clean and Smudge Filters/clean-verilog.vdent.bash\"
+
+[filter "clean-verilog-iStyle"]
+	clean = \"Git Clean and Smudge Filters/clean-verilog.iStyle.bash\"
