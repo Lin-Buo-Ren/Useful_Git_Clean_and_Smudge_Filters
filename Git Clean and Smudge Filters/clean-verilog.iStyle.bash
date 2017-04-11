@@ -525,6 +525,7 @@ init() {
 	iStyle \
 		--suffix=none\
 		--indent=tab=4\
+		--pad=oper\
 		"${stdin_dump}"\
 		>/dev/null # NOTE: iStyle output message in stdout!
 
