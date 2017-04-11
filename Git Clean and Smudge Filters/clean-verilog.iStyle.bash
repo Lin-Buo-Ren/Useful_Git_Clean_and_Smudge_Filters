@@ -483,6 +483,7 @@ meta_printHelpMessage(){
 
 	printf "## Usage ##\n"
 	printf "\t%s <commandline options>\n" "${RUNTIME_COMMAND_BASE}"
+	printf "(Input should be provided through data redirection by shell facility, cleaned product is provided through stdout)\n"
 	printf "\n"
 	printf "## Command-line Options ##\n"
 	meta_util_printSingleCommandlineOptionHelp "${COMMANDLINE_OPTION_DISPLAY_HELP_DESCRIPTION}" "${COMMANDLINE_OPTION_DISPLAY_HELP_LONG}" "${COMMANDLINE_OPTION_DISPLAY_HELP_SHORT}"
