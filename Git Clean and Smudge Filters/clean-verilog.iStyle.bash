@@ -53,7 +53,11 @@ declare -Ar META_RUNTIME_DEPENDENCIES_CRITICAL=(
 )
 
 ### These are the dependencies that are used later and also checked later
-declare -Ar META_RUNTIME_DEPENDENCIES=()
+declare -Ar META_RUNTIME_DEPENDENCIES=(
+	["cat"]="${META_RUNTIME_DEPENDENCIES_DESCRIPTION_GNU_COREUTILS}"
+	["rm"]="${META_RUNTIME_DEPENDENCIES_DESCRIPTION_GNU_COREUTILS}"
+	["iStyle"]="iStyle(Fast and Free Automatic Formatter for Verilog Source Code)"
+)
 
 ## Common constant definitions
 declare -ir COMMON_RESULT_SUCCESS=0
