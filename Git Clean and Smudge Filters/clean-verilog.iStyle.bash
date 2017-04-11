@@ -57,6 +57,7 @@ declare -Ar META_RUNTIME_DEPENDENCIES=(
 	["cat"]="${META_RUNTIME_DEPENDENCIES_DESCRIPTION_GNU_COREUTILS}"
 	["rm"]="${META_RUNTIME_DEPENDENCIES_DESCRIPTION_GNU_COREUTILS}"
 	["iStyle"]="iStyle(Fast and Free Automatic Formatter for Verilog Source Code)"
+	["sed"]="GNU 'sed'"
 )
 
 ## Common constant definitions
@@ -526,6 +527,9 @@ init() {
 		--indent=tab=4\
 		"${stdin_dump}"\
 		>/dev/null # NOTE: iStyle output message in stdout!
+
+	# Workaround: Remove redundant indentation before `module` statement
+	sed --in-place "s/^        module/module/" "${stdin_dump}"
 
 	# print stdin's content to stdout(for Git to fetch)
 	cat "${stdin_dump}"
