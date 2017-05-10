@@ -36,8 +36,7 @@ main() {
 	printf "Clean 過濾器：正在移除非必要資訊跟美化 Flat XML ODF 標記代碼……\n" 1>&2
 
 	# Catch the incoming stream to a temp file
-	local temp_file_name="$(basename "$PROGRAM_FILENAME").temporary.stdin.xml"
-	local temp_file="$PROGRAM_DIRECTORY/$temp_file_name"
+	local temp_file="$(mktemp --tmpdir "$(basename "$PROGRAM_FILENAME")".XXXXXX)"
 	rm --force "$temp_file"
 	cat >"$temp_file"
 
