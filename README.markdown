@@ -7,7 +7,9 @@ It is decided that clean and smudge filters for different file types shouldn't b
 This project will still exist to serve as a index of these related projects and an archive of previous versions, please refer to those project for the latest version of the filter.
 
 ## Index of Related Sub-projects(PRs Welcome!)
-T.B.A.
+* [Clean Filter for GNU Bash Scripts](https://github.com/Lin-Buo-Ren/Clean-Filter-for-GNU-Bash-Scripts)
+* [Clean Filter for Verilog](https://github.com/Lin-Buo-Ren/Clean-Filter-for-Verilog)
+* [Clean Filter for Flat-XML ODF Documents](https://github.com/libreoffice-tw/Clean-Filter-for-Flat-XML-ODF-Documents)
 
 ## Author
 林博仁 &lt;<Buo.Ren.Lin@gmail.com>&gt;
