@@ -2,7 +2,7 @@
 <https://github.com/Lin-Buo-Ren/Useful_Git_Clean_and_Smudge_Filters>  
 
 ## Development Ceased Notice
-It is decided that clean and smudge filters for different file types shouldn't be developed here in a central fashion and should be relocated to respective projects for each file types.
+It is decided that clean and smudge filters for different file types shouldn't be developed here in a centralized fashion and should be relocated to respective projects for each file types.
 
 This project will still exist to serve as a index of these related projects and an archive of previous versions, please refer to those project for the latest version of the filter.
 
